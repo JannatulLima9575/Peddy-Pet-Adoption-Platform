@@ -13,31 +13,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<body>
+<body class="font-mono">
     <!-- header section -->
         <section>
             <!-- navbar section -->
-                <nav class="w-11/12 mx-auto flex justify-around py-5">
-                    <div class="flex gap-x-3">
-                        <img class="h-8 w-8" src="images/logo.webp" alt="">
+                <nav class="w-11/12 mx-auto flex justify-around py-8 items-center">
+                    <div class="flex gap-x-3 items-center">
+                        <img class="h-6 w-6" src="images/logo.webp" alt="">
                         <h1 class="text-3xl font-bold">Peddy</h1>
                     </div>
                     <div>
                         <ul class="flex gap-8 ">
-                            <li><a href="">Home</a></li>
-                            <li><a href="">Shop</a></li>
-                            <li><a href="">Contact</a></li>
+                            <li><a href="#" href="#" class="text-gray-700 hover:text-teal-600">Home</a></li>
+                            <li><a href="#" href="#" class="text-gray-700 hover:text-teal-600">Shop</a></li>
+                            <li><a href="#" href="#" class="text-gray-700 hover:text-teal-600">Contact</a></li>
                         </ul>
                     </div>
-                    <div class="border-2 p-2 rounded-full">
+                    <div class="border border-[#0E7A8133] w-8 h-8 flex items-center justify-center rounded-full">
                         <i class="fa-regular fa-user"></i>
                     </div>
                 </nav>
         </section>
+        <!-- banner section -->
+        <section class="text-center max-w-3xl mx-auto px-4 mt-10">
+            <h2 class="text-gray-500 font-medium text-lg">Bringing Families Together <span>🔥</span></h2>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mt-3">
+                Your Path to Adoption <br> Starts Here
+            </h1>
+            <p class="text-gray-600 mt-4">
+                It is a long established fact that a reader will be distracted by the readable content 
+                of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.
+            </p>
+            <button class="mt-8 px-8 py-4 bg-[#0E7A81] text-white rounded-xl text-lg font-medium hover:bg-teal-700 transition">
+                View More
+            </button>
+        </section>
+    
+        <!-- Image Section -->
+        <div class="flex justify-center mt-12">
+            <img src="images/pet.webp" alt="Dog and Cat" class="max-w-5xl mx-auto">
+        </div>
+
+
+
     <!-- main section -->
         <section id="category-container" class="justify-center flex">
 
         </section>
+
+
 
     <!-- footer section -->
 
