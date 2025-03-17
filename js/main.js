@@ -1,66 +1,138 @@
-// load data
-const loadCategory = async() => {
-    const response = await fetch("https://openapi.programming-hero.com/api/peddy/categories");
-    const data = await response.json();
-    showCategory(data.categories)
+
+
+const loadCategory = async () => {
+  const response = await fetch("https://openapi.programming-hero.com/api/peddy/categories");
+  const data = await response.json();
+  showCategory(data.categories)
+
 }
 
-// display categories on UI
+
 const showCategory = (categories) => {
-    categories.forEach((element) => {
-        console.log(element);
-        const categoryContainer = document.getElementById('category-container');
-        const div = document.createElement("div");
+  categories.forEach((element) => {
+      const categoryContainer = document.getElementById('category-container');
+      const div = document.createElement("div");
+      div.innerHTML = `
+      <button onclick="loadPets('${element.category}')" class="btn">${element.category} 
+      <img class="w-8" src=${element.category_icon} alt="" />
+      </button>
+      `
+      categoryContainer.appendChild(div)
 
-        // show category icon on button
-        div.innerHTML = `
-        <button onclick="loadPets('${element.category}')" class="btn text-2xl px-2 w-[312px] h-[104px] hover:bg-[#0E7A81]/10 hover:rounded-full">${element.category}
-        <img class="w-12" src=${element.category_icon} alt="">   
-        </button>
-        `
-        categoryContainer.appendChild(div)
-    })
+  })
+}
+``
+
+const loadPets = async (categoryName) => {
+  
+  document.getElementById('status').style.display = "none";
+  show("spiner")
+  document.getElementById("petsContainer").style.display = "block";
+  const response = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`);
+  const data = await response.json();
+  if (data.data) {
+      displayPets(data.data);
+      makeHide("spiner")
+  }
 }
 
-// load data
-const loadPets = async(categoryName) => {
-    // console.log(categoryName);
-    
-    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`);
-    const data = await response.json();
-    displayPets(data.data);
-    
-}
-//  show data on UI
 const displayPets = (pets) => {
-    pets.forEach((pet) => {
-        console.log(pet)
-        const petsContainer = document.getElementById("pets-container");
-        petsContainer.innerHTML = "";
+  console.log(pets)
 
-        const div = document.createElement("div");
-        div.classList.add("mt-5")
-        div.innerHTML = `
-        <div class="card bg-base-100 w-96 shadow-sm">
-  <figure class="px-10 pt-10">
-    <img
-      src=${pet.image}
-      class="rounded-xl" />
-  </figure>
-  <div class="card-body">
-    <h2 class="card-title">${pet.breed}</h2>
-    <p>${pet.pet_details.slice(0,100)}</p>
-    <div class="card-actions">
-      <button class="btn btn-primary">Select</button>
-    </div>
+if (pets.length<1) {
+  document.getElementById("petsContainer").style.display = "none";
+document.getElementById('status').style.display="block"
+}
+
+
+
+  pets.forEach((pet) => {
+   
+      const petsContainer = document.getElementById("petsContainer");
+      petsContainer.innerHTML = "";
+
+      const div = document.createElement("div");
+      div.classList.add("mt-5")
+      div.innerHTML = `
+      <div class="card bg-base-100 w-96 shadow-sm">
+<figure>
+  <img
+    src=${pet.image} />
+</figure>
+<div class="card-body">
+  <h2 class="card-title">${pet.breed}</h2>
+  <p>${pet.pet_details.slice(0,100)}</p>
+  <div class="card-actions justify-end">
+    <button class="btn select btn-primary">Seelct</button>
+    <button onclick="handleDetails('${pet.petId}')" class="btn  bg-red-500 details">Details</button>
   </div>
 </div>
-        `
-        petsContainer.appendChild(div)
-    })
-    
+</div>
+      `;
+      petsContainer.appendChild(div)
+  })
+
+  const allSelectButton = document.getElementsByClassName("select");
+  for (const button of allSelectButton) {
+      button.addEventListener("click", (event) => {
+          const title = event.target.parentNode.parentNode.childNodes[1].innerText;
+          console.log(title)
+
+          const listContainer = document.getElementById('selcted-container');
+          const div = document.createElement("div");
+          div.classList.add("flex")
+          div.innerHTML = `
+          <li>${title}</li>
+          <button class="delete-btn btn ">Delete</button>
+          `;
+          listContainer.appendChild(div)
+          const prevCount = getValueById("count");
+          const sum = prevCount + 1;
+
+          document.getElementById('count').innerText = sum;
+          
+      })
+  }
+  
 }
 
+
+
+const makeHide = (id) => {
+  document.getElementById(id).style.display = "none";
+}
+
+const show = (id) => {
+  document.getElementById(id).style.display = "block";
+}
+
+
+const getValueById = (id) => {
+  const element = document.getElementById(id).innerText;
+  const convertedValue = parseInt(element);
+  return convertedValue;
+
+}
+
+
+
+
+const handleDetails = async(petId) => {
+  const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
+  const data = await response.json();
+  console.log(data.petData)
+  my_modal_1.showModal()
+
+}
+
+
+
+
+
+
+
 loadPets("cat")
+
+
 
 loadCategory()
