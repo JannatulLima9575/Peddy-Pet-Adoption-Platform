@@ -44,7 +44,7 @@
                 It is a long established fact that a reader will be distracted by the readable content 
                 of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.
             </p>
-            <button class="mt-8 px-8 py-4 bg-[#0E7A81] text-white rounded-xl text-lg font-medium hover:bg-teal-700 transition">
+            <button id="viewMoreBtn" class="mt-8 px-8 py-4 bg-[#0E7A81] text-white rounded-xl text-lg font-medium hover:bg-teal-700 transition">
                 View More
             </button>
         </section>
@@ -57,7 +57,7 @@
 
 
     <!-- main section -->
-        <section class="pb-6 w-11/12 mx-auto pt-[100px]">
+        <section id="adoptSection" class="pb-6 w-11/12 mx-auto pt-[100px]">
         <h1 class="text-center text-3xl">Adopt  Your  Best Friend</h1>
         <p class="text-base pt-6 text-center">It is a long established fact that a reader will be distracted by the readable content of a 
             <br>page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
@@ -73,12 +73,42 @@
         </div>
         </section>
 
-        <section class="pb-6 flex justify-center">
-            
-            <div id="pets-container">
-    <h1 id="status" class="text-center text-red-500">No Data Found</h1>
-            </div>
-        </section>
+<!-- category section  -->
+<section class="flex gap-4 p-5 w-full mx-auto justify-center" id="category-container">
+
+</section>
+
+
+<section class="mt-8 flex justify-center">
+    <h1 id="status" class="text-center text-red-500">NO data Fund !!!!!!!!!</h1>
+
+    <div id="spiner" class="spiner">
+        <span class="loading loading-bars loading-xs"></span>
+<span class="loading loading-bars loading-sm"></span>
+<span class="loading loading-bars loading-md"></span>
+<span class="loading loading-bars loading-lg"></span>
+<span class="loading loading-bars loading-xl"></span>
+<span class="loading loading-bars loading-lg"></span>
+<span class="loading loading-bars loading-xl"></span>
+    </div>
+<div id="petsContainer" class="pets-container">
+
+<button class="btn" onclick="my_modal_1.showModal()">open modal</button>
+<dialog id="my_modal_1" class="modal">
+<div class="modal-box">
+<h3 class="text-lg font-bold">Hello!</h3>
+<p class="py-4">Press ESC key or click the button below to close</p>
+<div class="modal-action">
+  <form method="dialog">
+   
+    <button class="btn">Close</button>
+  </form>
+</div>
+</div>
+</dialog>
+
+</div>
+</section>
 
     <!-- footer section -->
         <footer class="bg-black">
@@ -132,5 +162,6 @@
 
     
     <script src="js/main.js"></script>
+    <script src="js/test.js"></script>
 </body>
 </html>

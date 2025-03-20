@@ -127,6 +127,10 @@ const handleDetails = async(petId) => {
 
 
 
+// view more section
+document.getElementById("viewMoreBtn").addEventListener("click", function() {
+  document.getElementById("adoptSection").scrollIntoView({ behavior: "smooth" });
+});
 
 
 
